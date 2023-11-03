@@ -7,59 +7,58 @@ use Illuminate\Http\Request;
 
 class KontakController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $kontaks = Kontak::all();
+        return view('admin.kontak.index', compact('kontaks'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('admin.kontak.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'id_tentang' => 'required|integer',
+            'no_wa' => 'required',
+            'alamat' => 'required',
+            'instagram' => 'required',
+            'email' => 'required',
+            'telp' => 'required',
+        ]);
+
+        Kontak::create($validatedData);
+
+        return redirect(route('admin.kontak.index'))->with('success', 'Data kontak berhasil ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(kontak $kontak)
+    public function edit(Kontak $kontak)
     {
-        //
+        return view('admin.kontak.edit', compact('kontak'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(kontak $kontak)
+    public function update(Request $request, Kontak $kontak)
     {
-        //
+        $validatedData = $request->validate([
+            'id_tentang' => 'required|integer',
+            'no_wa' => 'required',
+            'alamat' => 'required',
+            'instagram' => 'required',
+            'email' => 'required',
+            'telp' => 'required',
+        ]);
+
+        $kontak->update($validatedData);
+
+        return redirect(route('admin.kontak.index'))->with('success', 'Data kontak berhasil diperbarui.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, kontak $kontak)
+    public function destroy(Kontak $kontak)
     {
-        //
-    }
+        $kontak->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(kontak $kontak)
-    {
-        //
+        return redirect(route('admin.kontak.index'))->with('success', 'Data kontak berhasil dihapus.');
     }
 }

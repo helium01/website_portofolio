@@ -7,59 +7,52 @@ use Illuminate\Http\Request;
 
 class LayananController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $layanans = Layanan::all();
+        return view('admin.layanan.index', compact('layanans'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('admin.layanan.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_layanan' => 'required',
+            'jenis' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        Layanan::create($validatedData);
+
+        return redirect(route('admin.layanan.index'))->with('success', 'Data layanan berhasil ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(layanan $layanan)
+    public function edit(Layanan $layanan)
     {
-        //
+        return view('admin.layanan.edit', compact('layanan'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(layanan $layanan)
+    public function update(Request $request, Layanan $layanan)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_layanan' => 'required',
+            'jenis' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        $layanan->update($validatedData);
+
+        return redirect(route('admin.layanan.index'))->with('success', 'Data layanan berhasil diperbarui.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, layanan $layanan)
+    public function destroy(Layanan $layanan)
     {
-        //
-    }
+        $layanan->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(layanan $layanan)
-    {
-        //
+        return redirect(route('admin.layanan.index'))->with('success', 'Data layanan berhasil dihapus.');
     }
 }

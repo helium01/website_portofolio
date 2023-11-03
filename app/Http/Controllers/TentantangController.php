@@ -7,59 +7,54 @@ use Illuminate\Http\Request;
 
 class TentantangController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $tentangs = Tentang::all();
+        return view('admin.tentang.index', compact('tentangs'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('admin.tentang.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_perusahaan' => 'required',
+            'alamat' => 'required',
+            'visi' => 'required',
+            'misi' => 'required',
+        ]);
+
+        Tentang::create($validatedData);
+
+        return redirect(route('admin.tentang.index'))->with('success', 'Data tentang berhasil ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(tentantang $tentantang)
+    public function edit(Tentang $tentang)
     {
-        //
+        return view('admin.tentang.edit', compact('tentang'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(tentantang $tentantang)
+    public function update(Request $request, Tentang $tentang)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_perusahaan' => 'required',
+            'alamat' => 'required',
+            'visi' => 'required',
+            'misi' => 'required',
+        ]);
+
+        $tentang->update($validatedData);
+
+        return redirect(route('admin.tentang.index'))->with('success', 'Data tentang berhasil diperbarui.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, tentantang $tentantang)
+    public function destroy(Tentang $tentang)
     {
-        //
-    }
+        $tentang->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(tentantang $tentantang)
-    {
-        //
+        return redirect(route('admin.tentang.index'))->with('success', 'Data tentang berhasil dihapus.');
     }
 }

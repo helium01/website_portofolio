@@ -7,59 +7,56 @@ use Illuminate\Http\Request;
 
 class ProjekController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $projeks = Projek::all();
+        return view('admin.projek.index', compact('projeks'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('admin.projek.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_projek' => 'required',
+            'jenis' => 'required',
+            'keterangan' => 'required',
+            'harga' => 'required',
+            'diskon' => 'required',
+        ]);
+
+        Projek::create($validatedData);
+
+        return redirect(route('admin.projek.index'))->with('success', 'Data projek berhasil ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(projek $projek)
+    public function edit(Projek $projek)
     {
-        //
+        return view('admin.projek.edit', compact('projek'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(projek $projek)
+    public function update(Request $request, Projek $projek)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_projek' => 'required',
+            'jenis' => 'required',
+            'keterangan' => 'required',
+            'harga' => 'required',
+            'diskon' => 'required',
+        ]);
+
+        $projek->update($validatedData);
+
+        return redirect(route('admin.projek.index'))->with('success', 'Data projek berhasil diperbarui.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, projek $projek)
+    public function destroy(Projek $projek)
     {
-        //
-    }
+        $projek->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(projek $projek)
-    {
-        //
+        return redirect(route('admin.projek.index'))->with('success', 'Data projek berhasil dihapus.');
     }
 }

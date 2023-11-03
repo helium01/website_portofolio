@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('kontaks', function (Blueprint $table) {
             $table->id();
+            $table->integer("id_tentang");
+            $table->string("no_wa");
+            $table->string("alamat");
+            $table->string("instagram");
+            $table->string("email");
+            $table->string("telp");
             $table->timestamps();
         });
     }
