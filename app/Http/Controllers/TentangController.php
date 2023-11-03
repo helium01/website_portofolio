@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\tentantang;
+use App\Models\tentang;
 use Illuminate\Http\Request;
 
-class TentantangController extends Controller
+class TentangController extends Controller
 {
     public function index()
     {

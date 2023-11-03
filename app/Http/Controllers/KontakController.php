@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\kontak;
+use App\Models\tentang;
 use Illuminate\Http\Request;
 
 class KontakController extends Controller
@@ -15,7 +16,8 @@ class KontakController extends Controller
 
     public function create()
     {
-        return view('admin.kontak.create');
+        $tentangs = Tentang::all();
+    return view('admin.kontak.create', compact('tentangs'));
     }
 
     public function store(Request $request)
