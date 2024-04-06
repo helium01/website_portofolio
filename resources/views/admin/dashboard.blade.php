@@ -7,9 +7,9 @@
         <li  class="active"><a href="#">Dashboard</a></li>
       </ol>
       <h1>Dashboard</h1>
-      <p>Dashboard is free admin template for everyone. Credits go to <a href="http://chartjs.org">Chart JS</a>, <a href="http://getbootstrap.com">Bootstrap</a>, and <a href="http://jqvmap.com">JQVMap</a>. templatemo provides <a href="#">free website templates</a> that can be used for any purpose. Morbi id nisi enim. Ut congue interdum pharetra facilisi. Aenean consectetur pellentesque mauris nec ornare. Nam tortor just, condimentum.</p>
+      <p>Sebuah aplikasi dashboard admin adalah sebuah antarmuka pengguna yang dirancang khusus untuk administrator atau pengelola sistem untuk mengelola dan memantau berbagai aspek dari suatu sistem, aplikasi, atau platform. Ini adalah pusat kendali yang menyediakan akses ke berbagai fitur administratif dan informasi penting yang dibutuhkan untuk mengelola suatu entitas.</p>
 
-      <div class="margin-bottom-30">
+      {{-- <div class="margin-bottom-30">
         <div class="row">
           <div class="col-md-12">
             <ul class="nav nav-pills">
@@ -20,7 +20,7 @@
             </ul>          
           </div>
         </div>
-      </div>         
+      </div>          --}}
 
       
        

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string("alamat");
             $table->string("visi");
             $table->string("misi");
+            // $table->string("logo");
             $table->timestamps();
         });
     }

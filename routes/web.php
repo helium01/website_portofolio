@@ -5,6 +5,7 @@ use App\Http\Controllers\TentangController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\ProjekController;
+use App\Http\Controllers\clientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,12 @@ use App\Http\Controllers\ProjekController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [clientController::class,'dashboard']);
+Route::get('/kontak', [clientController::class,'kontak']);
+Route::get('/layanan', [clientController::class,'layanan']);
+Route::get('/projek', [clientController::class,'projek']);
+Route::get('/tentang', [clientController::class,'tentang']);
+Route::get('/cari', [clientController::class,'cari']);
 
 Auth::routes();
 

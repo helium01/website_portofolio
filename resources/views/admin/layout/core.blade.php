@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
-  <title>Dashboard, Free HTML5 Admin Template</title>
+  <title>Admin</title>
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width">        
@@ -63,7 +63,7 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
       </div>
       <footer class="templatemo-footer">
         <div class="templatemo-copyright">
-          <p>Copyright &copy; 2084 Your Company Name</p>
+          <p>Copyright &copy; 2023 codingin</p>
         </div>
       </footer>
      
